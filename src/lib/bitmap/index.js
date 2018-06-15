@@ -33,5 +33,5 @@ class Bitmap {
     this.pixelGrid = [];
   }
 }
-
-console.log(Bitmap('../../assets/bitmap.bmo'));
+module.exports = Bitmap();
+console.log(Bitmap());
