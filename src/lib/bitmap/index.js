@@ -34,3 +34,4 @@ class Bitmap {
   }
 }
 
+console.log(Bitmap('../../assets/bitmap.bmo'));
