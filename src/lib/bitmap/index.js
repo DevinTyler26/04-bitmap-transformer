@@ -1,7 +1,6 @@
 'use strict';
 
 const readWrite = require('../read-write');
-const headerInfo = require('../header');
 
 class Bitmap {
   constructor(buffer) {
@@ -49,4 +48,3 @@ class Bitmap {
   }
 }
 module.exports = Bitmap();
-console.log(Bitmap());
