@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const getHeader = require('./header/index');
+const bitmap = require('./bitmap');
 const bitmapTransformer = require('bmp-transform');
 
 const bitmap = module.exports = {}
