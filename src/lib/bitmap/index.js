@@ -1,7 +1,6 @@
 'use strict';
 
-const readWrite = require('../read-write');
-const headerInfo = require('../header');
+const readWrite = require('../read-write/index');
 
 class Bitmap {
   constructor(buffer) {

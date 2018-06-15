@@ -20,13 +20,13 @@ RW.write = function (filePath, buffer, callback) { //eslint-disable-line
   });
 };
 
-RW.read('../../assets/bitmap.bmp', (err, data) => {
-  if (err) throw err;
-  console.log('return from READ', data);
-  return data;
-});
+// RW.read('../../assets/bitmap.bmp', (err, data) => {
+//   if (err) throw err;
+//   console.log('return from READ', data);
+//   return data;
+// });
 
-RW.write('../../assets/new.txt', 'hello', (err) => {
-  if (err) throw err;
-  console.log('return from WRITE');
-});
+// RW.write('../../assets/new.txt', 'hello', (err) => {
+//   if (err) throw err;
+//   console.log('return from WRITE');
+// });
