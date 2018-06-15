@@ -1,6 +1,6 @@
 'use strict';
 
-const readWrite = require('../read-write/index');
+const readWrite = require('../read-write');
 
 class Bitmap {
   constructor(buffer) {
@@ -48,4 +48,3 @@ class Bitmap {
   }
 }
 module.exports = Bitmap();
-console.log(Bitmap());
