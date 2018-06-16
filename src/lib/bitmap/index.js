@@ -2,7 +2,7 @@
 
 const readWrite = require('../read-write');
 
-class Bitmap {
+const Bitmap = module.exports = class {
   constructor(buffer) {
     const SIZE = 2;
     const RESERVED_1 = 6;
@@ -25,19 +25,19 @@ class Bitmap {
     if (this.header.type !== 'BM') {
       throw new Error('This is not a Bitmap file!');
     }
-    this.header.size = buffer.readUnit16LE(SIZE);
-    this.header.startOfPix = buffer.readUnit16LE(PX_START);
-    this.header.reserved1 = buffer.readUnit16LE(RESERVED_1);
-    this.header.reserved2 = buffer.readUnit16LE(RESERVED_2);
-    this.header.sizeOfHeader = buffer.readUnit16LE(HEADER_SIZE);
-    this.header.width = buffer.readUnit16LE(WIDTH);
-    this.header.height = buffer.readUnit16LE(HEIGHT);
-    this.header.bitsPerPx = buffer.readUnit16LE(BITS_PER_PX);
-    this.header.compression = buffer.readUnit16LE(COMPRESSION);
-    this.header.imgSize = buffer.readUnit16LE(IMG_SIZE);
-    this.header.horRes = buffer.readUnit16LE(HOR_RES);
-    this.header.verRes = buffer.readUnit16LE(VER_RES);
-    this.header.paletteSize = buffer.readUnit16LE(PAL_SIZE);
+    this.header.size = buffer.readUInt16LE(SIZE);
+    this.header.startOfPix = buffer.readUInt16LE(PX_START);
+    this.header.reserved1 = buffer.readUInt16LE(RESERVED_1);
+    this.header.reserved2 = buffer.readUInt16LE(RESERVED_2);
+    this.header.sizeOfHeader = buffer.readUInt16LE(HEADER_SIZE);
+    this.header.width = buffer.readUInt16LE(WIDTH);
+    this.header.height = buffer.readUInt16LE(HEIGHT);
+    this.header.bitsPerPx = buffer.readUInt16LE(BITS_PER_PX);
+    this.header.compression = buffer.readUInt16LE(COMPRESSION);
+    this.header.imgSize = buffer.readUInt16LE(IMG_SIZE);
+    this.header.horRes = buffer.readUInt16LE(HOR_RES);
+    this.header.verRes = buffer.readUInt16LE(VER_RES);
+    this.header.paletteSize = buffer.readUInt16LE(PAL_SIZE);
     this.header.paletteOffset = PALETTE_OFFS;
     this.header.paletteLength = (this.header.startOfPix - this.header.paletteOffset) / 4;
     this.header.pixelDataRowSize = (this.header.bitsPerPx / 8) * this.header.width;
@@ -46,5 +46,4 @@ class Bitmap {
     this.pixelData = [];
     this.pixelGrid = [];
   }
-}
-module.exports = Bitmap();
+};
