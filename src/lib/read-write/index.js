@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const Bitmap = require('../bitmap');
 
 const RW = module.exports = {};
 
@@ -9,6 +10,8 @@ RW.read = function (filePath, callback) { //eslint-disable-line
   fs.readFile(filePath, (err, data) => {
     if (err) callback(err); 
     callback(null, data);
+    const bmpData = new Bitmap(data);
+    console.log(bmpData);
   }); 
 };
 
@@ -20,11 +23,11 @@ RW.write = function (filePath, buffer, callback) { //eslint-disable-line
   });
 };
 
-// RW.read('../../assets/bitmap.bmp', (err, data) => {
-//   if (err) throw err;
-//   console.log('return from READ', data);
-//   return data;
-// });
+RW.read('../../assets/bitmap.bmp', (err, data) => {
+  if (err) throw err;
+  console.log('return from READ', data);
+  return data;
+});
 
 // RW.write('../../assets/new.txt', 'hello', (err) => {
 //   if (err) throw err;
