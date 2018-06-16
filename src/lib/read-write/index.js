@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+
 const Bitmap = require('../bitmap');
 
 const RW = module.exports = {};
