@@ -10,9 +10,9 @@ const RW = module.exports = {};
 RW.read = function (filePath, callback) { //eslint-disable-line
   fs.readFile(filePath, (err, data) => {
     if (err) callback(err); 
-    callback(null, data);
     const bmpData = new Bitmap(data);
-    console.log(bmpData);
+    callback(null, bmpData);
+    // console.log(bmpData);
   }); 
 };
 
@@ -27,6 +27,12 @@ RW.write = function (filePath, buffer, callback) { //eslint-disable-line
 RW.read('../../assets/bitmap.bmp', (err, data) => {
   if (err) throw err;
   console.log('return from READ', data);
+  const color = data.buffer.slice(data.header.paletteOffset);
+  color.fill(255);
+  RW.write('../../assets/new.bmp', data.buffer, (err2) => {
+    if (err2) throw err2;
+    console.log('return from WRITE');
+  });
   return data;
 });
 
