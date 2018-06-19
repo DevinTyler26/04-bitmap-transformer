@@ -1,8 +1,9 @@
 'use strict';
 
-const readWrite = require('../read-write');
+const readWrite = require('../read-write'); //eslint-disable-line
+const fs = require('fs'); //eslint-disable-line
 
-const Bitmap = module.exports = class {
+const Bitmap = module.exports = class { //eslint-disable-line
   constructor(buffer) {
     const SIZE = 2;
     const RESERVED_1 = 6;
@@ -45,5 +46,63 @@ const Bitmap = module.exports = class {
     this.palette = [];
     this.pixelData = [];
     this.pixelGrid = [];
+    this.loadPixelData();
+    this.loadPixelGrid();
+    // this.writeNewPix('../../assets/bitmap2.bmp');
   }
+
+  loadPixelData() {
+    let offset = this.header.startOfPix;
+
+    for (let i = 0; i < this.header.pixelArraySize / 4; i++) {
+      const b = this.buffer.readUInt8(offset);
+      const g = this.buffer.readUInt8(offset + 1);
+      const r = this.buffer.readUInt8(offset + 2);
+      const a = this.buffer.readUInt8(offset + 3);
+      this.pixelData.push(b);
+      this.pixelData.push(g);
+      this.pixelData.push(r);
+      this.pixelData.push(a);
+      offset += 4;
+    }
+  }
+
+  loadPixelGrid() {
+    const offset = this.header.startOfPix; //eslint-disable-line
+    let x = 0;
+    const y = 0;
+
+    for (let i = 0; i < this.header.pixelArraySize; i += 4) {
+      if (this.pixelGrid[y] === undefined) this.pixelGrid[y] = [];
+
+      const b = this.pixelData[i];
+      const g = this.pixelData[i + 1];
+      const r = this.pixelData[i + 2];
+      this.pixelGrid[y].push([b, g, r, 0]);
+      x + 1; //eslint-disable-line
+
+      if (x % (this.header.pixelDataRowSize / 4) === 0) {
+        x = 0;
+        y + 1; //eslint-disable-line
+      }
+    }
+  }
+
+//   write(filePath, buffer, callback) { //eslint-disable-line
+//     fs.writeFile(filePath, buffer, (err) => {
+//       if (err) throw err;
+//     });
+//   }
+
+//   writeNewPix(filePath) {
+//     let data = '';
+//     for (let i = 0; i < this.pixelGrid.length; i++) {
+//       for (let j = 0; j < this.pixelGrid[i].length; j++) {
+//         const pix = this.pixelGrid[i][j];
+//         data += `[${pix[0]}, ${pix[1]}, ${pix[2]}, ${pix[3]}] `;
+//       }
+//       data += '\n';
+//     }
+//     this.write(filePath, data);
+//   }
 };
