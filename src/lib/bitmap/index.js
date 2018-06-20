@@ -48,7 +48,6 @@ const Bitmap = module.exports = class { //eslint-disable-line
     this.pixelGrid = [];
     this.loadPixelData();
     this.loadPixelGrid();
-    // this.writeNewPix('../../assets/bitmap2.bmp');
   }
 
   loadPixelData() {
@@ -88,21 +87,11 @@ const Bitmap = module.exports = class { //eslint-disable-line
     }
   }
 
-//   write(filePath, buffer, callback) { //eslint-disable-line
-//     fs.writeFile(filePath, buffer, (err) => {
-//       if (err) throw err;
-//     });
-//   }
+  // copy() {
+  //   const newColorTable = this.;
 
-//   writeNewPix(filePath) {
-//     let data = '';
-//     for (let i = 0; i < this.pixelGrid.length; i++) {
-//       for (let j = 0; j < this.pixelGrid[i].length; j++) {
-//         const pix = this.pixelGrid[i][j];
-//         data += `[${pix[0]}, ${pix[1]}, ${pix[2]}, ${pix[3]}] `;
-//       }
-//       data += '\n';
-//     }
-//     this.write(filePath, data);
-//   }
+  //   const newBuffer = Buffer.fill([
+  //     this.
+  //   ])
+  // }
 };

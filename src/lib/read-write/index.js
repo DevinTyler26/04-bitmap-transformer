@@ -29,14 +29,9 @@ RW.read('../../assets/bitmap.bmp', (err, data) => {
   console.log('return from READ', data);
   const color = data.buffer.slice(data.header.paletteOffset);
   color.fill(255);
-  RW.write('../../assets/new.bmp', data.buffer, (err2) => {
+  RW.write('../../assets/colorWhite.bmp', data.buffer, (err2) => {
     if (err2) throw err2;
     console.log('return from WRITE');
   });
   return data;
 });
-
-// RW.write('../../assets/new.txt', 'hello', (err) => {
-//   if (err) throw err;
-//   console.log('return from WRITE');
-// });

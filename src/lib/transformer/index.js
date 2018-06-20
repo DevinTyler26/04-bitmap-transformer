@@ -1,35 +1,13 @@
-'use strict';
+// 'use strict';
 
-const fs = require('fs');
-const bitmap = require('./bitmap');
-const bitmapTransformer = require('bmp-transform');
+// const transform = module.exports = {};
 
-const bitmap = module.exports = {}
-
-function (image, transform) {
-  const headers = getHeader(image);
-
-  if (headers.type !== 'BM' && headers.type !== 'BA') {
-    return console.log('Note a BM or BA type BMP');
-  }
-
-  const newImage = new Buffer(image);
-}
-
-
-
-
-
-
-
-
-
-
-
-// fs.readFile('bitmap.bmp', (err, data) => {
-//   if (err) return console.log(err);
-//   const transformed = colorChanger(data);
-
-//   fs.writeFile('newBitmap.bmp', err, transformed => {
-//   return console.log(err);
-// });
+// transform.darken = (object, path, callback) => {
+//   const startValue = object.paletteOffset;
+//   const size = object.paletteOffset;
+//   for (let i = startValue; i < startValue + size; i++) {
+//     const transformValue = (object.allData[i] / 4).toString(16);
+//     object.allData.write(transformValue, i, 'hex');
+//   }
+//   callback(object.allData, path);
+// };
